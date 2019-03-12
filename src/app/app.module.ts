@@ -8,9 +8,12 @@ import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { PueblosComponent } from "./pages/pueblos/pueblos.component";
 import { EscritoresComponent } from "./pages/escritores/escritores.component";
 import { AdministradoresComponent } from "./pages/administradores/administradores.component";
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { HeaderComponent } from "./components/header/header.component";
+import { FooterComponent } from "./components/footer/footer.component";
+import { AngularFireModule } from "@angular/fire";
+import { environment } from "../environments/environment";
+import { from } from "rxjs";
 
 @NgModule({
   declarations: [
@@ -24,7 +27,11 @@ import { FooterComponent } from './components/footer/footer.component';
     HeaderComponent,
     FooterComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase, "Turisteando")
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
