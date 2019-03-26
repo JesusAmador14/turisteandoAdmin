@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent
+  },
+  {
+    path: "",
+    loadChildren: "./pages/pages.module#PagesModule"
   }
 ];
 
