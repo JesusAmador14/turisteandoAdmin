@@ -4,24 +4,34 @@ import { NgModule } from "@angular/core";
 import { PagesComponent } from "./pages.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { EscritoresComponent } from "./escritores/escritores.component";
-
+import { AuthGuard } from "../services/guard/auth.guard";
+import { PueblosComponent } from "./pueblos/pueblos.component";
 const routes: Routes = [
   {
     path: "",
     component: PagesComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: "dashboard",
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: "",
         redirectTo: "dashboard",
-        pathMatch: "full"
+        pathMatch: "full",
+        canActivate: [AuthGuard]
       },
       {
         path: "escritores",
-        component: EscritoresComponent
+        component: EscritoresComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "pueblos",
+        component: PueblosComponent,
+        canActivate: [AuthGuard]
       }
     ]
   }

@@ -7,6 +7,17 @@ import { EscritoresComponent } from "./escritores/escritores.component";
 import { PueblosComponent } from "./pueblos/pueblos.component";
 import { HeaderComponent } from "../components/header/header.component";
 import { SidebarComponent } from "../components/sidebar/sidebar.component";
+import { NgProgressModule } from "@ngx-progressbar/core";
+import { NgProgressRouterModule } from "@ngx-progressbar/router";
+import {
+  NavigationStart,
+  NavigationError,
+  NavigationCancel,
+  RouterModule,
+  GuardsCheckEnd,
+  NavigationEnd,
+  GuardsCheckStart
+} from "@angular/router";
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -18,7 +29,16 @@ const PAGES_COMPONENTS = [
 ];
 
 @NgModule({
-  imports: [PagesRoutingModule],
-  declarations: [...PAGES_COMPONENTS]
+  imports: [
+    PagesRoutingModule,
+    NgProgressModule,
+    NgProgressRouterModule.withConfig({
+      startEvents: [GuardsCheckStart, NavigationStart],
+      completeEvents: [NavigationEnd, NavigationError, NavigationCancel],
+      id: "progresBar"
+    })
+  ],
+  declarations: [...PAGES_COMPONENTS],
+  providers: []
 })
 export class PagesModule {}

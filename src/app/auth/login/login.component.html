@@ -1,3 +1,4 @@
+<ng-progress id="progressBar"></ng-progress>
 <div class="login-page">
     <div class="login-page-container">
         <div class="login-box">
@@ -7,14 +8,23 @@
             </div>
             <div class="card">
                 <div class="body">
-                    <form id="sign_in" method="POST">
+                    <form id="sign_in" [formGroup]="loginForm" (ngSubmit)="loginEmailandPassword()">
                         <div class="msg">Inicia sesión con Turisteando</div>
                         <div class="input-group">
                             <span class="input-group-addon">
                               <i class="material-icons">email</i>
-                          </span>
+                            </span>
                             <div class="form-line">
-                                <input type="text" class="form-control" name="email" placeholder="Correo" required autofocus>
+                                <input type="email" class="form-control" [(ngModel)]="email" formControlName="email" placeholder="Correo">
+                            </div>
+                            <div *ngIf="loginForm.get('email').errors && loginForm.get('email').dirty">
+
+                                <p class="text-danger" *ngIf="loginForm.get('email').hasError('required')">
+                                    * Campo requerido
+                                </p>
+                                <p class="text-danger" *ngIf="loginForm.get('email').hasError('email')">
+                                    * Formato invalido
+                                </p>
                             </div>
                         </div>
                         <div class="input-group">
@@ -22,7 +32,16 @@
                               <i class="material-icons">lock</i>
                           </span>
                             <div class="form-line">
-                                <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                                <input type="password" class="form-control" [(ngModel)]="password" formControlName="password" placeholder="Contraseña">
+                            </div>
+                            <div *ngIf="loginForm.get('password').errors && loginForm.get('password').dirty">
+
+                                <p class="text-danger" *ngIf="loginForm.get('password').hasError('required')">
+                                    * Campo requerido
+                                </p>
+                                <p class="text-danger" *ngIf="loginForm.get('password').hasError('minLength')">
+                                    * Deben ser minimo 6 caracteres
+                                </p>
                             </div>
                         </div>
                         <div class="row">
@@ -31,7 +50,7 @@
                                 <label for="rememberme">Recuérdame</label>
                             </div>
                             <div class="col-xs-4">
-                                <button class="btn btn-block waves-effect bg-teal" type="submit">INICIAR</button>
+                                <button class="btn btn-block waves-effect bg-teal" [disabled]="!loginForm.valid">INICIAR</button>
                             </div>
                         </div>
                     </form>
