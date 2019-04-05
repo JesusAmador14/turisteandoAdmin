@@ -18,6 +18,7 @@ import {
   NavigationEnd,
   GuardsCheckStart
 } from "@angular/router";
+import { CreatePueblosComponent } from "./pueblos/create-pueblos/create-pueblos.component";
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -25,7 +26,8 @@ const PAGES_COMPONENTS = [
   PueblosComponent,
   DashboardComponent,
   HeaderComponent,
-  SidebarComponent
+  SidebarComponent,
+  CreatePueblosComponent
 ];
 
 @NgModule({
@@ -38,7 +40,7 @@ const PAGES_COMPONENTS = [
       id: "progresBar"
     })
   ],
-  declarations: [...PAGES_COMPONENTS],
+  declarations: [...PAGES_COMPONENTS, CreatePueblosComponent],
   providers: []
 })
 export class PagesModule {}

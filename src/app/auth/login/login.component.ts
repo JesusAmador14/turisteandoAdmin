@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
         //redirecciona al dashboard si el logueo esta correcto
         this.ng.run(() => {
           this.route.navigate(["dashboard"]);
+          this.progressRef.complete();
         });
       })
       .catch(err => {
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit {
         alert("Usuario o contraseña incorrectos");
         this.email = "";
         this.password = "";
+        this.progressRef.complete();
       });
   }
   ngOnInit() {

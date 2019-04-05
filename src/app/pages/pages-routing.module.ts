@@ -6,6 +6,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { EscritoresComponent } from "./escritores/escritores.component";
 import { AuthGuard } from "../services/guard/auth.guard";
 import { PueblosComponent } from "./pueblos/pueblos.component";
+import { CreatePueblosComponent } from "./pueblos/create-pueblos/create-pueblos.component";
+
 const routes: Routes = [
   {
     path: "",
@@ -31,6 +33,11 @@ const routes: Routes = [
       {
         path: "pueblos",
         component: PueblosComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "pueblos/create",
+        component: CreatePueblosComponent,
         canActivate: [AuthGuard]
       }
     ]
