@@ -9,6 +9,7 @@ import { HeaderComponent } from "../components/header/header.component";
 import { SidebarComponent } from "../components/sidebar/sidebar.component";
 import { NgProgressModule } from "@ngx-progressbar/core";
 import { NgProgressRouterModule } from "@ngx-progressbar/router";
+
 import {
   NavigationStart,
   NavigationError,
@@ -19,6 +20,10 @@ import {
   GuardsCheckStart
 } from "@angular/router";
 import { CreatePueblosComponent } from "./pueblos/create-pueblos/create-pueblos.component";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from "@angular/common";
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { AgmCoreModule } from '@agm/core';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -33,14 +38,21 @@ const PAGES_COMPONENTS = [
 @NgModule({
   imports: [
     PagesRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    NgxDropzoneModule,
     NgProgressModule,
     NgProgressRouterModule.withConfig({
       startEvents: [GuardsCheckStart, NavigationStart],
       completeEvents: [NavigationEnd, NavigationError, NavigationCancel],
       id: "progresBar"
+    }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAsbC9LhwM5QEi8xaJ26verzmC7832rQAo'
     })
   ],
-  declarations: [...PAGES_COMPONENTS, CreatePueblosComponent],
+  declarations: [...PAGES_COMPONENTS],
   providers: []
 })
 export class PagesModule {}

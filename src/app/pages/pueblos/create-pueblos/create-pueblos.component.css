@@ -1,0 +1,15 @@
+    .custom-dropzone {
+        height: 200px;
+        color: #555;
+        border: 5px dashed rgb(235, 79, 79);
+        border-radius: 5px;
+        font-size: 20px;
+    }
+    
+    .custom-dropzone:hover {
+        border-style: solid;
+    }
+    
+    agm-map {
+        height: 300px;
+    }

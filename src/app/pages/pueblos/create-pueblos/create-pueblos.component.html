@@ -6,90 +6,75 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header">
-                        <h2>ADVANCED FORM EXAMPLE WITH VALIDATION</h2>
-                        <ul class="header-dropdown m-r--5">
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">more_vert</i>
-                                </a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="javascript:void(0);">Action</a></li>
-                                    <li><a href="javascript:void(0);">Another action</a></li>
-                                    <li><a href="javascript:void(0);">Something else here</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
                     <div class="body">
-                        <form id="wizard_with_validation" method="POST">
-                            <h3>Account Information</h3>
-                            <fieldset>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" name="username" required>
-                                        <label class="form-label">Username*</label>
+                        <form id="registrarPueblo" enctype="multipart/form-data" [formGroup]="registrarPueblo" (ngSubmit)="setPueblo()">
+                            <h2 class="card-inside-title">Datos básicos</h2>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" [(ngModel)]="name" formControlName="name" placeholder="Nombre">
+                                        </div>
+                                        <!-- <div *ngIf="loginForm.get('email').errors && loginForm.get('email').dirty">
+                                
+                                                                        <p class="text-danger" *ngIf="loginForm.get('email').hasError('required')">
+                                                                            * Campo requerido
+                                                                        </p>
+                                                                        <p class="text-danger" *ngIf="loginForm.get('email').hasError('email')">
+                                                                            * Formato invalido
+                                                                        </p>
+                                                                    </div> -->
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="password" class="form-control" name="password" id="password" required>
-                                        <label class="form-label">Password*</label>
-                                    </div>
-                                </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="password" class="form-control" name="confirm" required>
-                                        <label class="form-label">Confirm Password*</label>
-                                    </div>
-                                </div>
-                            </fieldset>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" [(ngModel)]="estado" formControlName="estado" placeholder="Estado">
+                                        </div>
+                                        <!-- <div *ngIf="loginForm.get('password').errors && loginForm.get('password').dirty">
 
-                            <h3>Profile Information</h3>
-                            <fieldset>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" name="name" class="form-control" required>
-                                        <label class="form-label">First Name*</label>
+                                        <p class="text-danger" *ngIf="loginForm.get('password').hasError('required')">
+                                            * Campo requerido
+                                        </p>
+                                        <p class="text-danger" *ngIf="loginForm.get('password').hasError('minLength')">
+                                            * Deben ser minimo 6 caracteres
+                                        </p>
+                                    </div> -->
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" name="surname" class="form-control" required>
-                                        <label class="form-label">Last Name*</label>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="1" class="form-control no-resize auto-growth" placeholder="Descripción del pueblo"></textarea>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="email" name="email" class="form-control" required>
-                                        <label class="form-label">Email*</label>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="fallback">
+                                        <input name="file" type="file" multiple />
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <textarea name="address" cols="30" rows="3" class="form-control no-resize" required></textarea>
-                                        <label class="form-label">Address*</label>
-                                    </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="5" (mapClick)="onMapClick($event)">
+                                        <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen"></agm-marker>
+                                    </agm-map>
                                 </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input min="18" type="number" name="age" class="form-control" required>
-                                        <label class="form-label">Age*</label>
-                                    </div>
-                                    <div class="help-info">The warning step will show up if age is less than 18</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <button class="btn btn-block waves-effect bg-teal" [disabled]="!registrarPueblo.valid">Registrar</button>
                                 </div>
-                            </fieldset>
-
-                            <h3>Terms & Conditions - Finish</h3>
-                            <fieldset>
-                                <input id="acceptTerms-2" name="acceptTerms" type="checkbox" required>
-                                <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
-                            </fieldset>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- #END# Advanced Form Example With Validation -->
     </div>
 </section>

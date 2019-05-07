@@ -1,10 +1,10 @@
-$(function () {
+$(function() {
     skinChanger();
     activateNotificationAndTasksScroll();
 
     setSkinListHeightAndScroll(true);
     setSettingListHeightAndScroll(true);
-    $(window).resize(function () {
+    $(window).resize(function() {
         setSkinListHeightAndScroll(false);
         setSettingListHeightAndScroll(false);
     });
@@ -12,7 +12,7 @@ $(function () {
 
 //Skin changer
 function skinChanger() {
-    $('.right-sidebar .demo-choose-skin li').on('click', function () {
+    $('.right-sidebar .demo-choose-skin li').on('click', function() {
         var $body = $('body');
         var $this = $(this);
 
@@ -30,9 +30,9 @@ function setSkinListHeightAndScroll(isFirstTime) {
     var height = $(window).height() - ($('.navbar').innerHeight() + $('.right-sidebar .nav-tabs').outerHeight());
     var $el = $('.demo-choose-skin');
 
-    if (!isFirstTime){
-      $el.slimScroll({ destroy: true }).height('auto');
-      $el.parent().find('.slimScrollBar, .slimScrollRail').remove();
+    if (!isFirstTime) {
+        $el.slimScroll({ destroy: true }).height('auto');
+        $el.parent().find('.slimScrollBar, .slimScrollRail').remove();
     }
 
     $el.slimscroll({
@@ -50,9 +50,9 @@ function setSettingListHeightAndScroll(isFirstTime) {
     var height = $(window).height() - ($('.navbar').innerHeight() + $('.right-sidebar .nav-tabs').outerHeight());
     var $el = $('.right-sidebar .demo-settings');
 
-    if (!isFirstTime){
-      $el.slimScroll({ destroy: true }).height('auto');
-      $el.parent().find('.slimScrollBar, .slimScrollRail').remove();
+    if (!isFirstTime) {
+        $el.slimScroll({ destroy: true }).height('auto');
+        $el.parent().find('.slimScrollBar, .slimScrollRail').remove();
     }
 
     $el.slimscroll({
@@ -86,7 +86,7 @@ function addLoadEvent(func) {
     if (typeof window.onload != 'function') {
         window.onload = func;
     } else {
-        window.onload = function () {
+        window.onload = function() {
             oldonload();
             func();
         }
@@ -94,11 +94,16 @@ function addLoadEvent(func) {
 }
 
 function loadTracking() {
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
             (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', trackingId, 'auto');

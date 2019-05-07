@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "./auth/login/login.component";
 import { AuthGuard } from "./services/guard/auth.guard";
 import { SecureInnerPagesGuard } from "./services/guard/secure-inner-pages.guard";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   {
     path: "",
