@@ -7,7 +7,6 @@ import { EscritoresComponent } from "./escritores/escritores.component";
 import { AuthGuard } from "../services/guard/auth.guard";
 import { PueblosComponent } from "./pueblos/pueblos.component";
 import { CreatePueblosComponent } from "./pueblos/create-pueblos/create-pueblos.component";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {

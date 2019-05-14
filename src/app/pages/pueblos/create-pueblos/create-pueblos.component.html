@@ -7,13 +7,13 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="body">
-                        <form id="registrarPueblo" enctype="multipart/form-data" [formGroup]="registrarPueblo" (ngSubmit)="setPueblo()">
+                        <form id="registrarPueblo" enctype="multipart/form-data" [formGroup]="registrarPueblo" (ngSubmit)="setPueblo($event)">
                             <h2 class="card-inside-title">Datos básicos</h2>
                             <div class="row clearfix">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" [(ngModel)]="name" formControlName="name" placeholder="Nombre">
+                                            <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre">
                                         </div>
                                         <!-- <div *ngIf="loginForm.get('email').errors && loginForm.get('email').dirty">
                                 
@@ -29,7 +29,12 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" [(ngModel)]="estado" formControlName="estado" placeholder="Estado">
+                                            <select class="form-control show-tick" formControlName="estado" [value]="estado">
+                                                <option selected value="estado">-- Estado --</option>
+                                               
+                                                <option *ngFor="let item of estados" value="{{item}}">{{item}}</option>
+                                                
+                                            </select>
                                         </div>
                                         <!-- <div *ngIf="loginForm.get('password').errors && loginForm.get('password').dirty">
 
@@ -47,18 +52,20 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea rows="1" class="form-control no-resize auto-growth" placeholder="Descripción del pueblo"></textarea>
+                                            <textarea rows="4" formControlName="descripcion" class="form-control no-resize auto-growth" placeholder="Descripción del pueblo"></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <h2 class="card-inside-title">Imagenes</h2>
                             <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="fallback">
-                                        <input name="file" type="file" multiple />
+                                        <input name="file" accept=".png, .jpg, .jpeg" type="file" multiple />
                                     </div>
                                 </div>
                             </div>
+                            <h2 class="card-inside-title">Ubicación</h2>
                             <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="5" (mapClick)="onMapClick($event)">
@@ -68,7 +75,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <button class="btn btn-block waves-effect bg-teal" [disabled]="!registrarPueblo.valid">Registrar</button>
+                                    <button type="submit" class="btn lg btn-block waves-effect bg-teal" [disabled]="!registrarPueblo.valid">Registrar</button>
                                 </div>
                             </div>
                         </form>
@@ -78,3 +85,6 @@
         </div>
     </div>
 </section>
+<ngx-spinner class="loader" bdColor="rgba(51,51,51,0.8)" size="large" color="#fff" type="ball-clip-rotate-pulse" [fullScreen]="true">
+    <p style="color: white"> Registrando... </p>
+</ngx-spinner>

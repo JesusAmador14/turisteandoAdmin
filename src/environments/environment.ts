@@ -5,12 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyAR6Zpy7QPjZYY4Qnun9kdP5Bg-K_2IRxA",
+    apiKey: "AIzaSyAsbC9LhwM5QEi8xaJ26verzmC7832rQAo",
     authDomain: "turisteando-68da0.firebaseapp.com",
     databaseURL: "https://turisteando-68da0.firebaseio.com",
     projectId: "turisteando-68da0",
     storageBucket: "turisteando-68da0.appspot.com",
-    messagingSenderId: "518421334331"
+    messagingSenderId: "518421334331",
+    appId: "1:518421334331:web:c88533aba08f46f7"
   }
 };
 

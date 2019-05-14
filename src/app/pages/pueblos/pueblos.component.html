@@ -37,37 +37,14 @@
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    <tr>
-                                        <td>Zenaida Frank</td>
-                                        <td>Software Engineer</td>
-                                        <td>New York</td>
-                                        <td>63</td>
+                                    <tr *ngFor="let pueblo of pueblos">
+                                        <td>{{pueblo.nombre}}</td>
+                                        <td>{{pueblo.estado}}</td>
+                                        <td>{{pueblo.id}}</td>
+                                        <td>
+                                            <button (click)="delete(pueblo.id)">Delete</button>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td>Zorita Serrano</td>
-                                        <td>Software Engineer</td>
-                                        <td>San Francisco</td>
-                                        <td>56</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jennifer Acosta</td>
-                                        <td>Junior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>43</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cara Stevens</td>
-                                        <td>Sales Assistant</td>
-                                        <td>New York</td>
-                                        <td>46</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hermione Butler</td>
-                                        <td>Regional Director</td>
-                                        <td>London</td>
-                                        <td>47</td>
-                                    </tr>
-
                                 </tbody>
                             </table>
                         </div>

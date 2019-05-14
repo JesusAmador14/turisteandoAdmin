@@ -1,8 +1,10 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { AuthService } from "../../../services/auth/auth.service";
 import { Router } from "@angular/router";
-import { NgForm, FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { NgProgressRef, NgProgress } from "@ngx-progressbar/core";
+import { PuebloService } from "../../../services/pueblos/pueblo.service";
+import { NgxSpinnerService } from 'ngx-spinner';
+
 @Component({
   selector: 'app-create-pueblos',
   templateUrl: './create-pueblos.component.html',
@@ -10,58 +12,82 @@ import { NgProgressRef, NgProgress } from "@ngx-progressbar/core";
 })
 export class CreatePueblosComponent implements OnInit {
   registrarPueblo: FormGroup;
-  name: string;
-  estado: string;
+  nombre: string;
+  estado: string = "estado";
+  descripcion: string;
   progressRef: NgProgressRef;
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number = 19.432608;
+  lng: number = -99.133208;
+  data;
   locationChosen = false;
+  estados:string[] = [ "Aguascalientes",
+              "Baja California",
+              "Baja California Sur",
+              "Campeche",
+              "Chiapas",
+              "Chihuahua",
+              "Coahuila",
+              "Colima",
+              "Durango",
+              "Ciudad México",
+              "Guanajuato",
+              "Guerrero",
+              "Hidalgo",
+              "Jalisco",
+              "Michoacán",
+              "Morelos",
+              "Nayarit",
+              "Nuevo León",
+              "Oaxaca",
+              "Puebla",
+              "Querétaro",
+              "Quintana Roo",
+              "San Luis Potosí",
+              "Sinaloa",
+              "Sonora",
+              "Tabasco",
+              "Tamaulipas",
+              "Tlaxcala",
+              "Veracruz",
+              "Yucatán",
+              "Zacatecas"];
   constructor(
-    private auth: AuthService,
+    private formBuilder: FormBuilder,
+    private progress: NgProgress,
+    private pueblo: PuebloService,
+    private spinner: NgxSpinnerService,
     private ng: NgZone,
     private route: Router,
-    private formBuilder: FormBuilder,
-    private progress: NgProgress
   ) {
     this.registrarPueblo = this.formBuilder.group({
-      name: ["", [Validators.required, Validators.email]],
-      estado: ["", [Validators.required, Validators.minLength(6)]]
+      nombre: ["", [Validators.required]],
+      estado: ["", [Validators.required]],
+      descripcion: ["", [Validators.required]]
     });
   }
 
   ngOnInit() {
     this.progressRef = this.progress.ref("progressBar");
+    this.spinner.show();
   }
 
-
   onMapClick(event){
-    console.log(event);
     this.lat = event.coords.lat;
     this.lng = event.coords.lng;
     this.locationChosen = true;
   }
-  setPueblo(){
 
+  setPueblo(event){
+    this.spinner.show();
+    this.data = {nombre: event.srcElement[0].value, estado: event.srcElement[1].value, descripcion: event.srcElement[2].value };
+
+    this.pueblo.crearPueblo(this.data, event.srcElement[3].files, this.lat, this.lng).then(pro =>{
+      //redirecciona al dashboard si el logueo esta correcto
+      this.ng.run(() => {
+        this.route.navigate(["pueblos"]);
+        this.spinner.hide();
+      });
+      
+    }).catch();
   }
-  onFilesAdded(files: File[]) {
-  console.log(files);
- 
-  files.forEach(file => {
-    const reader = new FileReader();
- 
-    reader.onload = (e: ProgressEvent) => {
-      const content = (e.target as FileReader).result;
- 
-      // this content string could be used as an image source
-      // or be uploaded to a webserver via HTTP.
-      console.log(content);
-    };
- 
-    // use this for basic text files like .txt or .csv
-    //reader.readAsText(file);
- 
-    // use this for images
-    reader.readAsDataURL(file);
-  });
-}
 }

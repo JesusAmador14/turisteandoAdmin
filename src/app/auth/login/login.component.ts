@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
         this.email = "";
         this.password = "";
         this.progressRef.complete();
+        console.log(err);
       });
   }
   ngOnInit() {

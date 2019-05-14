@@ -22,8 +22,9 @@ import {
 import { CreatePueblosComponent } from "./pueblos/create-pueblos/create-pueblos.component";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
-import { NgxDropzoneModule } from 'ngx-dropzone';
 import { AgmCoreModule } from '@agm/core';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -41,7 +42,7 @@ const PAGES_COMPONENTS = [
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    NgxDropzoneModule,
+    NgxSpinnerModule,
     NgProgressModule,
     NgProgressRouterModule.withConfig({
       startEvents: [GuardsCheckStart, NavigationStart],

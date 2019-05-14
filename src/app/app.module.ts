@@ -7,6 +7,7 @@ import { LoginComponent } from "./auth/login/login.component";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "../environments/environment";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgProgressModule } from "@ngx-progressbar/core";
@@ -30,6 +31,7 @@ import { AuthService } from "./services/auth/auth.service";
     AngularFireModule.initializeApp(environment.firebase, "Turisteando"),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
     NgProgressModule.withConfig({
