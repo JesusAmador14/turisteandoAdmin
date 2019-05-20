@@ -10,6 +10,7 @@ import { SidebarComponent } from "../components/sidebar/sidebar.component";
 import { NgProgressModule } from "@ngx-progressbar/core";
 import { NgProgressRouterModule } from "@ngx-progressbar/router";
 
+import { MatFormFieldModule, MatInputModule, MatTableModule, MatPaginatorModule } from "@angular/material";
 import {
   NavigationStart,
   NavigationError,
@@ -24,8 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { AgmCoreModule } from '@agm/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const PAGES_COMPONENTS = [
   PagesComponent,
   EscritoresComponent,
@@ -44,6 +44,10 @@ const PAGES_COMPONENTS = [
     CommonModule,
     NgxSpinnerModule,
     NgProgressModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule,
     NgProgressRouterModule.withConfig({
       startEvents: [GuardsCheckStart, NavigationStart],
       completeEvents: [NavigationEnd, NavigationError, NavigationCancel],

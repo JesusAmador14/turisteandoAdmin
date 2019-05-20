@@ -45,6 +45,6 @@ export class PuebloService {
   }
 
   getPueblos(){
-    return this.firestore.collection('pueblos').snapshotChanges();
+    return this.firestore.collection('pueblos').valueChanges();
   }
 }

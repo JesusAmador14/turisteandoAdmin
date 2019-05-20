@@ -1,7 +1,12 @@
-$(function () {
+$(function() {
+
+
     $('.js-basic-example').DataTable({
-        responsive: true
+        responsive: true,
     });
+    console.log("DataTable Activado");
+
+
 
     //Exportable table
     $('.js-exportable').DataTable({

@@ -1,30 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PuebloService } from '../../services/pueblos/pueblo.service';
 import { Pueblo } from "../../models/pueblo/pueblo.model";
-import { Observable } from 'rxjs';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { DataSource } from '@angular/cdk/table';
 @Component({
   selector: 'app-pueblos',
   templateUrl: './pueblos.component.html',
   styleUrls: ['./pueblos.component.css']
 })
 export class PueblosComponent implements OnInit {
-  pueblos: Pueblo[];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource = new MatTableDataSource();
+  displayedColumns = ['nombre', 'estado', 'acciones'];
+
   constructor(private puebloService: PuebloService) { }
 
   ngOnInit() {
-    this.puebloService.getPueblos().subscribe(data => {
-      this.pueblos = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data()
-        } as Pueblo;
-      });
-      console.log(this.pueblos);
-    });
+    return this.puebloService.getPueblos().subscribe(res => this.dataSource.data = res);
   }
-  delete(id:string){
-    
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
-
-
+  filtrar(filterValue: string) {
+    // filterValue = filterValue.trim(); // Remove whitespace
+    // filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
