@@ -68,7 +68,6 @@ export class CreatePueblosComponent implements OnInit {
 
   ngOnInit() {
     this.progressRef = this.progress.ref("progressBar");
-    this.spinner.show();
   }
 
   onMapClick(event){

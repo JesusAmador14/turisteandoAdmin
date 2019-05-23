@@ -12,7 +12,7 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgProgressModule } from "@ngx-progressbar/core";
 import { NgProgressRouterModule } from "@ngx-progressbar/router";
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   NavigationStart,
   NavigationError,
@@ -27,7 +27,8 @@ import { AuthService } from "./services/auth/auth.service";
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   imports: [
-    BrowserModule,
+    //BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, "Turisteando"),
     AngularFireAuthModule,

@@ -7,10 +7,16 @@ import { EscritoresComponent } from "./escritores/escritores.component";
 import { PueblosComponent } from "./pueblos/pueblos.component";
 import { HeaderComponent } from "../components/header/header.component";
 import { SidebarComponent } from "../components/sidebar/sidebar.component";
+import { DialogComponent } from "../components/dialog/dialog.component";
 import { NgProgressModule } from "@ngx-progressbar/core";
 import { NgProgressRouterModule } from "@ngx-progressbar/router";
 
-import { MatFormFieldModule, MatInputModule, MatTableModule, MatPaginatorModule } from "@angular/material";
+import { MatFormFieldModule, 
+         MatInputModule,
+         MatTableModule, 
+         MatPaginatorModule, 
+         MatSelectModule, 
+         MatDialogModule } from "@angular/material";
 import {
   NavigationStart,
   NavigationError,
@@ -25,7 +31,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { AgmCoreModule } from '@agm/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ActividadesComponent } from './actividades/actividades.component';
+import { RestaurantesComponent } from './restaurantes/restaurantes.component';
+
 const PAGES_COMPONENTS = [
   PagesComponent,
   EscritoresComponent,
@@ -33,7 +41,10 @@ const PAGES_COMPONENTS = [
   DashboardComponent,
   HeaderComponent,
   SidebarComponent,
-  CreatePueblosComponent
+  CreatePueblosComponent,
+  DialogComponent,
+  ActividadesComponent,
+  RestaurantesComponent
 ];
 
 @NgModule({
@@ -45,6 +56,8 @@ const PAGES_COMPONENTS = [
     NgxSpinnerModule,
     NgProgressModule,
     MatTableModule,
+    MatSelectModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
@@ -58,6 +71,9 @@ const PAGES_COMPONENTS = [
     })
   ],
   declarations: [...PAGES_COMPONENTS],
-  providers: []
+  providers: [],
+  entryComponents: [
+    DialogComponent
+  ]
 })
 export class PagesModule {}

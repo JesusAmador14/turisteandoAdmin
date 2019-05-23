@@ -18,31 +18,61 @@
                         </div>
                     </div>
                     <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+
+                                <label>Filtrar por: </label>
+
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <mat-form-field>
+                                    <mat-select (selectionChange)="filtrarEstado($event)" placeholder="-- Estado --">
+                                        <mat-option value="">-- Estado --</mat-option>
+                                        <mat-option *ngFor="let item of estados" value="{{item}}">{{item}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
                         <div class="table-responsive">
                             <mat-form-field>
-                                <input matInput (keyup)="filtrar($event.target.value)" placeholder="Buscar">
+                                <input matInput (keyup)="filtrar($event.target.value)" placeholder="Buscar...">
                             </mat-form-field>
 
                             <table mat-table [dataSource]="dataSource" class=" animate table table-bordered table-striped table-hover js-basic-example dataTable">
 
-                                <!-- Position Column -->
                                 <ng-container matColumnDef="nombre">
                                     <th mat-header-cell *matHeaderCellDef> Nombre </th>
                                     <td mat-cell *matCellDef="let pueblo">{{pueblo.nombre}}</td>
                                 </ng-container>
 
-                                <!-- Name Column -->
                                 <ng-container matColumnDef="estado">
                                     <th mat-header-cell *matHeaderCellDef> Estado </th>
                                     <td mat-cell *matCellDef="let pueblo">{{pueblo.estado}}</td>
                                 </ng-container>
 
-                                <!-- Weight Column -->
+                                <ng-container matColumnDef="actividades">
+                                    <th mat-header-cell *matHeaderCellDef> Actividades </th>
+                                    <td mat-cell *matCellDef="let pueblo">
+                                        <a [routerLink]="['/pueblos/actividades/', {{pueblo.id}}]" routerLinkActive="router-link-active" class="btn btn-info btn-circle waves-effect waves-circle waves-float">
+                                            <i class="material-icons">remove_red_eye</i>
+                                        </a>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="restaurantes">
+                                    <th mat-header-cell *matHeaderCellDef> Restaurantes </th>
+                                    <td mat-cell *matCellDef="let pueblo">
+                                        <button type="button" (click)="restaurantes(pueblo)" class="btn btn-info btn-circle waves-effect waves-circle waves-float">
+                                          <i class="material-icons">remove_red_eye</i>
+                                        </button>
+                                    </td>
+                                </ng-container>
+
                                 <ng-container matColumnDef="acciones">
                                     <th mat-header-cell *matHeaderCellDef> Acciones </th>
                                     <td mat-cell *matCellDef="let pueblo">
-                                        <button type="button" class="btn btn-danger btn-circle waves-effect waves-circle waves-float">
-                                                <i class="material-icons">delete</i>
+                                        <button type="button" (click)="delete(pueblo.id, pueblo.nombre)" class="btn btn-danger btn-circle waves-effect waves-circle waves-float">
+                                          <i class="material-icons">delete</i>
                                         </button>
                                     </td>
                                 </ng-container>

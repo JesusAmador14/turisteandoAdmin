@@ -17,3 +17,4 @@
 @import url(./assets/plugins/morrisjs/morris.css);
 @import url(./assets/styles/style.css);
 @import url(./assets/styles/themes/theme-teal.min.css);
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";

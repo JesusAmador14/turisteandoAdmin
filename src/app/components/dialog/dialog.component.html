@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Va a eliminar a {{data.nombre}}</h1>
+<div mat-dialog-content>
+    <p>Esté cambio no puede ser revertido</p>
+</div>
+<div mat-dialog-actions class="container-fluid">
+    <div class="col-xs-8">
+        <button mat-button class="btn btn-default waves-effect" (click)="onNoClick()">No</button>
+    </div>
+    <div class="col-xs-4">
+        <button mat-button class="right btn btn-danger waves-effect" mat-dialog-close="true" cdkFocusInitial>Ok</button>
+    </div>
+</div>

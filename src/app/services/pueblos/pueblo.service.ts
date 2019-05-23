@@ -33,18 +33,23 @@ export class PuebloService {
         }
         console.log(id);
         this.firestore.collection('pueblos').doc(id).update({
-          nombre: data.nombre, 
-          estado: data.estado, 
-          descripcion: data.descripcion, 
-          lat: lat, 
+          nombre: data.nombre,
+          estado: data.estado,
+          descripcion: data.descripcion,
+          lat: lat,
           lng: lng,
-          images: this.images
+          images: this.images,
+          visitas: 0
         });
       }
     });
   }
 
   getPueblos(){
-    return this.firestore.collection('pueblos').valueChanges();
+    return this.firestore.collection('pueblos').snapshotChanges();
+  }
+
+  delete(id: string){
+    return this.firestore.collection('pueblos').doc(id).delete();
   }
 }
