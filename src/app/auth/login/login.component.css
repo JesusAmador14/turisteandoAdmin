@@ -6,3 +6,11 @@ body {
     background: linear-gradient(to right, #38ef7d, #11998e);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+.login-page {
+    padding: 5% 0 4% 0 !important;
+}
+
+.login-page-container {
+    margin: 6% auto !important;
+}

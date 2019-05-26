@@ -33,8 +33,9 @@ import { CommonModule } from "@angular/common";
 import { AgmCoreModule } from '@agm/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ActividadesComponent } from './actividades/actividades.component';
-import { RestaurantesComponent } from './restaurantes/restaurantes.component';
 import { ActividadesCreateComponent } from './actividades/actividades-create/actividades-create.component';
+import { GastronomiaComponent } from "./gastronomia/gastronomia.component";
+import { CreateGastronomiaComponent } from './gastronomia/create-gastronomia/create-gastronomia.component';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -46,8 +47,9 @@ const PAGES_COMPONENTS = [
   CreatePueblosComponent,
   DialogComponent,
   ActividadesComponent,
-  RestaurantesComponent,
-  ActividadesCreateComponent
+  ActividadesCreateComponent,
+  GastronomiaComponent,
+  CreateGastronomiaComponent
 ];
 
 @NgModule({

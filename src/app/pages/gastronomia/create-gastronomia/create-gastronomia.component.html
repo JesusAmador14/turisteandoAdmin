@@ -1,0 +1,62 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>Registrar Actividades de: {{pueblo?.nombre}}</h2>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="body">
+                        <form id="registrarPueblo" enctype="multipart/form-data" [formGroup]="registrarComida" (ngSubmit)="setComida($event)">
+                            <h2 class="card-inside-title">Datos básicos</h2>
+                            <div class="row clearfix">
+                                <div class="col-sm-6 col-md-6">
+                                    <mat-form-field class="form-group">
+                                        <input matInput required placeholder="Nombre" formControlName="nombre" [errorStateMatcher]="matcher">
+                                        <mat-error *ngIf="registrarComida.get('nombre').hasError('minLength') && !registrarComida.get('nombre').hasError('required')">
+                                            El campo es minímo <strong>6 carácteres</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="registrarComida.get('nombre').hasError('required')">
+                                            El nombre es <strong>requerido</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <mat-form-field class="form-group">
+                                        <mat-label> Descripción del platillo</mat-label>
+                                        <textarea matInput formControlName="descripcion" maxlength="220" #descripcion cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+                                        <mat-hint align="end">{{descripcion.value.length}} / 220</mat-hint>
+                                        <mat-error *ngIf="registrarComida.get('descripcion').hasError('minLength') && !registrarComida.get('descripcion').hasError('required')">
+                                            El campo es minímo <strong>6 carácteres</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="registrarComida.get('descripcion').hasError('required')">
+                                            La descripción es <strong>requerida</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <h2 class="card-inside-title">Imagénes</h2>
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="fallback">
+                                        <input name="file" accept=".png, .jpg, .jpeg" type="file" multiple />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-xs-4">
+                                    <button type="submit" [disabled]="!registrarComida.valid" class="btn lg btn-block waves-effect bg-teal">Registrar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<ngx-spinner class="loader" bdColor="rgba(51,51,51,0.8)" size="large" color="#fff" type="ball-clip-rotate-pulse" [fullScreen]="true">
+    <p style="color: white"> Registrando... </p>
+</ngx-spinner>

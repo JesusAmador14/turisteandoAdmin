@@ -3,12 +3,13 @@ import { NgModule } from "@angular/core";
 import { PagesComponent } from "./pages.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { EscritoresComponent } from "./escritores/escritores.component";
-import { AuthGuard } from "../services/guard/auth.guard";
+import { AuthGuard } from '../services/guard/auth.guard';
 import { PueblosComponent } from "./pueblos/pueblos.component";
 import { CreatePueblosComponent } from "./pueblos/create-pueblos/create-pueblos.component";
-import { RestaurantesComponent } from "./restaurantes/restaurantes.component";
 import { ActividadesComponent } from "./actividades/actividades.component";
 import { ActividadesCreateComponent } from './actividades/actividades-create/actividades-create.component';
+import { GastronomiaComponent } from './gastronomia/gastronomia.component';
+import { CreateGastronomiaComponent } from './gastronomia/create-gastronomia/create-gastronomia.component';
 
 const routes: Routes = [
   {
@@ -43,11 +44,6 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: "pueblos/restaurantes/:id",
-        component: RestaurantesComponent,
-        canActivate: [AuthGuard]
-      },
-      {
         path: "pueblos/actividades/:id",
         component: ActividadesComponent,
         canActivate: [AuthGuard]
@@ -55,6 +51,16 @@ const routes: Routes = [
       {
         path: "pueblos/actividades/:id/create",
         component: ActividadesCreateComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "pueblos/gastronomia/:id",
+        component: GastronomiaComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "pueblos/gastronomia/:id/create",
+        component: CreateGastronomiaComponent,
         canActivate: [AuthGuard]
       }
     ]

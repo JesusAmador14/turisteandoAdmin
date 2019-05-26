@@ -51,7 +51,7 @@ export class PueblosComponent implements OnInit {
     "nombre",
     "estado",
     "actividades",
-    "restaurantes",
+    "gastronomia",
     "acciones"
   ];
   progressRef: NgProgressRef;
@@ -84,7 +84,7 @@ export class PueblosComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  filtrarEstado(filterValue: string) {
+  filtrarEstado(filterValue) {
     this.dataSource.filter = filterValue.source.value.trim().toLowerCase();
   }
 
@@ -97,8 +97,6 @@ export class PueblosComponent implements OnInit {
       this.progressRef.complete();
     });
   }
-
-  restaurantes(pueblo) {}
 
   delete(id, nombre): void {
     const dialogRef = this.dialog.open(DialogComponent, {
