@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.progressRef.complete();
         console.log(err);
       });
-  }
+    }
   ngOnInit() {
     this.progressRef = this.progress.ref("progressBar");
   }

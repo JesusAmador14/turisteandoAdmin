@@ -1,0 +1,155 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>Registrar Actividades de: {{pueblo?.nombre}}</h2>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="body">
+                        <form id="registrarPueblo" enctype="multipart/form-data" [formGroup]="registrarActividad" (ngSubmit)="setActividad($event)">
+                            <h2 class="card-inside-title">Datos básicos</h2>
+                            <div class="row clearfix">
+                                <div class="col-sm-6 col-md-6">
+                                    <mat-form-field class="form-group">
+                                        <input matInput required placeholder="Nombre" formControlName="nombre" [errorStateMatcher]="matcher">
+                                        <mat-error *ngIf="registrarActividad.get('nombre').hasError('minLength') && !registrarActividad.get('nombre').hasError('required')">
+                                            El campo es minímo <strong>6 carácteres</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="registrarActividad.get('nombre').hasError('required')">
+                                            El nombre es <strong>requerido</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-6">
+                                    <mat-form-field class="form-group">
+                                        <mat-select required formControlName="categoria" (selectionChange)="select($event.value)" [value]="categoria" [errorStateMatcher]="matcher">
+                                            <mat-option selected value="categoria">-- Ninguna --</mat-option>
+                                            <mat-option *ngFor="let item of categorias" value="{{item}}">{{item}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="registrarActividad.get('categoria').hasError('required')">
+                                            La categoría es <strong>requerida</strong>
+                                        </mat-error>
+                                        <mat-label><b> Categorías</b></mat-label>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <mat-form-field class="form-group">
+                                        <mat-label> Descripción de la actividad</mat-label>
+                                        <textarea matInput formControlName="descripcion" maxlength="220" #descripcion cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+                                        <mat-hint align="end">{{descripcion.value.length}} / 220</mat-hint>
+                                        <mat-error *ngIf="registrarActividad.get('descripcion').hasError('minLength') && !registrarActividad.get('descripcion').hasError('required')">
+                                            El campo es minímo <strong>6 carácteres</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="registrarActividad.get('descripcion').hasError('required')">
+                                            La descripción es <strong>requerida</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <h2 class="card-inside-title">Imagenes</h2>
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="fallback">
+                                        <input name="file" accept=".png, .jpg, .jpeg" type="file" multiple />
+                                    </div>
+                                </div>
+                            </div>
+                            <h2 class="card-inside-title">Dirección</h2>
+                            <div class="row clearfix">
+                                <div class="col-sm-12 col-md-6 col-lg-6">
+                                    <mat-form-field class="form-group">
+                                        <input matInput placeholder="Calle *" formControlName="calle" [errorStateMatcher]="matcher">
+                                        <mat-error *ngIf="registrarActividad.get('calle').hasError('minLength') && !registrarActividad.get('calle').hasError('required')">
+                                            El campo es minímo <strong>6 carácteres</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="registrarActividad.get('calle').hasError('required')">
+                                            La calle es <strong>requerida</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                    <mat-form-field class="form-group">
+                                        <input matInput placeholder="Colonia *" formControlName="colonia" [errorStateMatcher]="matcher">
+                                        <mat-error *ngIf="registrarActividad.get('colonia').hasError('minLength') && !registrarActividad.get('colonia').hasError('required')">
+                                            El campo es minímo <strong>6 carácteres</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="registrarActividad.get('colonia').hasError('required')">
+                                            La colonia es <strong>requerida</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-md-2 col-lg-2">
+                                    <mat-form-field class="form-group">
+                                        <input matInput type="number" placeholder="Numero *" formControlName="numero" [errorStateMatcher]="matcher">
+                                        <mat-error *ngIf="registrarActividad.get('numero').hasError('required')">
+                                            El numero es <strong>requerida</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <h2 class="card-inside-title">Horario</h2>
+                            <h6>Días: </h6>
+                            <div class="row clearfix">
+                                <div class="col-sm-4 col-md-3 col-lg-3">
+                                    <mat-checkbox value="Todos">Todos</mat-checkbox>
+                                </div>
+                                <div class="col-sm-4 col-md-3 col-lg-3">
+                                    <mat-checkbox value="Lunes">Lunes</mat-checkbox>
+                                </div>
+                                <div class="col-sm-4 col-md-3 col-lg-3">
+                                    <mat-checkbox value="Martes">Martes</mat-checkbox>
+                                </div>
+                                <div class="col-sm-4 col-md-3 col-lg-3">
+                                    <mat-checkbox value="Miércoles">Miércoles</mat-checkbox>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-4 col-md-3 col-lg-3">
+                                    <mat-checkbox value="Jueves">Jueves</mat-checkbox>
+                                </div>
+                                <div class="col-sm-4 col-md-3 col-lg-3">
+                                    <mat-checkbox value="Viernes">Viernes</mat-checkbox>
+                                </div>
+                                <div class="col-sm-4 col-md-3 col-lg-3">
+                                    <mat-checkbox value="Sábado">Sábado</mat-checkbox>
+                                </div>
+                                <div class="col-sm-4 col-md-3 col-lg-3">
+                                    <mat-checkbox value="Domingo">Domingo</mat-checkbox>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-4 col-md-3 col-lg-3">
+                                    <mat-form-field class="form-group">
+                                        <input matInput placeholder="Hora de entrada *" type="time" formControlName="horarioEntrada" [errorStateMatcher]="matcher">
+                                        <mat-error *ngIf="registrarActividad.get('horarioEntrada').hasError('required')">
+                                            El horario es <strong>requerido</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-4 col-md-3 col-lg-3">
+                                    <mat-form-field class="form-group">
+                                        <input matInput placeholder="Hora de salida *" type="time" formControlName="horarioSalida" [errorStateMatcher]="matcher">
+                                        <mat-error *ngIf="registrarActividad.get('horarioSalida').hasError('required')">
+                                            El horario es <strong>requerido</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-xs-4">
+                                    <button type="submit" [disabled]="!registrarActividad.valid" class="btn lg btn-block waves-effect bg-teal">Registrar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<ngx-spinner class="loader" bdColor="rgba(51,51,51,0.8)" size="large" color="#fff" type="ball-clip-rotate-pulse" [fullScreen]="true">
+    <p style="color: white"> Registrando... </p>
+</ngx-spinner>

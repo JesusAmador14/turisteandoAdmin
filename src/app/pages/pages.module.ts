@@ -11,12 +11,13 @@ import { DialogComponent } from "../components/dialog/dialog.component";
 import { NgProgressModule } from "@ngx-progressbar/core";
 import { NgProgressRouterModule } from "@ngx-progressbar/router";
 
-import { MatFormFieldModule, 
+import { MatFormFieldModule,
          MatInputModule,
-         MatTableModule, 
-         MatPaginatorModule, 
-         MatSelectModule, 
-         MatDialogModule } from "@angular/material";
+         MatTableModule,
+         MatPaginatorModule,
+         MatSelectModule,
+         MatDialogModule,
+        MatCheckboxModule } from "@angular/material";
 import {
   NavigationStart,
   NavigationError,
@@ -33,6 +34,7 @@ import { AgmCoreModule } from '@agm/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ActividadesComponent } from './actividades/actividades.component';
 import { RestaurantesComponent } from './restaurantes/restaurantes.component';
+import { ActividadesCreateComponent } from './actividades/actividades-create/actividades-create.component';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -44,7 +46,8 @@ const PAGES_COMPONENTS = [
   CreatePueblosComponent,
   DialogComponent,
   ActividadesComponent,
-  RestaurantesComponent
+  RestaurantesComponent,
+  ActividadesCreateComponent
 ];
 
 @NgModule({
@@ -61,6 +64,7 @@ const PAGES_COMPONENTS = [
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
+    MatCheckboxModule,
     NgProgressRouterModule.withConfig({
       startEvents: [GuardsCheckStart, NavigationStart],
       completeEvents: [NavigationEnd, NavigationError, NavigationCancel],

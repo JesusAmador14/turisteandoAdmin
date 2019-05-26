@@ -8,6 +8,7 @@ import { PueblosComponent } from "./pueblos/pueblos.component";
 import { CreatePueblosComponent } from "./pueblos/create-pueblos/create-pueblos.component";
 import { RestaurantesComponent } from "./restaurantes/restaurantes.component";
 import { ActividadesComponent } from "./actividades/actividades.component";
+import { ActividadesCreateComponent } from './actividades/actividades-create/actividades-create.component';
 
 const routes: Routes = [
   {
@@ -41,11 +42,6 @@ const routes: Routes = [
         component: CreatePueblosComponent,
         canActivate: [AuthGuard]
       },
-      // {
-      //   path: "pueblos/actividades/:id",
-      //   component: ActividadesComponent,
-      //   canActivate: [AuthGuard]
-      // },
       {
         path: "pueblos/restaurantes/:id",
         component: RestaurantesComponent,
@@ -54,6 +50,11 @@ const routes: Routes = [
       {
         path: "pueblos/actividades/:id",
         component: ActividadesComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "pueblos/actividades/:id/create",
+        component: ActividadesCreateComponent,
         canActivate: [AuthGuard]
       }
     ]

@@ -81,7 +81,6 @@ export class CreatePueblosComponent implements OnInit {
     this.data = {nombre: event.srcElement[0].value, estado: event.srcElement[1].value, descripcion: event.srcElement[2].value };
 
     this.pueblo.crearPueblo(this.data, event.srcElement[3].files, this.lat, this.lng).then(pro =>{
-      //redirecciona al dashboard si el logueo esta correcto
       this.ng.run(() => {
         this.route.navigate(["pueblos"]);
         this.spinner.hide();
