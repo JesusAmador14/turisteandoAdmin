@@ -21,9 +21,9 @@
                                         </mat-error>
                                     </mat-form-field>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-3">
                                     <mat-form-field class="form-group">
-                                        <mat-select required formControlName="categoria" (selectionChange)="select($event.value)" [value]="categoria" [errorStateMatcher]="matcher">
+                                        <mat-select required formControlName="categoria" (selectionChange)="selectCategoria($event.value)" [value]="categoria" [errorStateMatcher]="matcher">
                                             <mat-option selected value="categoria">-- Ninguna --</mat-option>
                                             <mat-option *ngFor="let item of categorias" value="{{item}}">{{item}}</mat-option>
                                         </mat-select>
@@ -33,13 +33,26 @@
                                         <mat-label><b> Categorías</b></mat-label>
                                     </mat-form-field>
                                 </div>
+                                <div class="col-sm-3">
+                                    <mat-form-field class="form-group">
+                                        <mat-select required formControlName="etiqueta" (selectionChange)="selectEtiqueta($event.value)" [value]="etiqueta" [errorStateMatcher]="matcher">
+                                            <mat-option selected value="etiqueta">-- Ninguna --</mat-option>
+                                            <mat-option *ngFor="let item of etiquetas" value="{{item}}">{{item}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="registrarActividad.get('etiqueta').hasError('required')">
+                                            La etiqueta es <strong>requerida</strong>
+                                        </mat-error>
+                                        <mat-label><b> Etiquetas</b></mat-label>
+                                    </mat-form-field>
+                                </div>
+
                             </div>
                             <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <mat-form-field class="form-group">
                                         <mat-label> Descripción de la actividad</mat-label>
-                                        <textarea matInput formControlName="descripcion" maxlength="220" #descripcion cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
-                                        <mat-hint align="end">{{descripcion.value.length}} / 220</mat-hint>
+                                        <textarea matInput formControlName="descripcion" maxlength="320" #descripcion cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+                                        <mat-hint align="end">{{descripcion.value.length}} / 320</mat-hint>
                                         <mat-error *ngIf="registrarActividad.get('descripcion').hasError('minLength') && !registrarActividad.get('descripcion').hasError('required')">
                                             El campo es minímo <strong>6 carácteres</strong>
                                         </mat-error>
@@ -61,32 +74,24 @@
                             <div class="row clearfix">
                                 <div class="col-sm-12 col-md-6 col-lg-6">
                                     <mat-form-field class="form-group">
-                                        <input matInput placeholder="Calle *" formControlName="calle" [errorStateMatcher]="matcher">
-                                        <mat-error *ngIf="registrarActividad.get('calle').hasError('minLength') && !registrarActividad.get('calle').hasError('required')">
+                                        <input matInput placeholder="Calle" formControlName="calle" [errorStateMatcher]="matcher">
+                                        <mat-error *ngIf="registrarActividad.get('calle').hasError('minLength')">
                                             El campo es minímo <strong>6 carácteres</strong>
-                                        </mat-error>
-                                        <mat-error *ngIf="registrarActividad.get('calle').hasError('required')">
-                                            La calle es <strong>requerida</strong>
                                         </mat-error>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <mat-form-field class="form-group">
-                                        <input matInput placeholder="Colonia *" formControlName="colonia" [errorStateMatcher]="matcher">
-                                        <mat-error *ngIf="registrarActividad.get('colonia').hasError('minLength') && !registrarActividad.get('colonia').hasError('required')">
+                                        <input matInput placeholder="Colonia" formControlName="colonia" [errorStateMatcher]="matcher">
+                                        <mat-error *ngIf="registrarActividad.get('colonia').hasError('minLength')">
                                             El campo es minímo <strong>6 carácteres</strong>
                                         </mat-error>
-                                        <mat-error *ngIf="registrarActividad.get('colonia').hasError('required')">
-                                            La colonia es <strong>requerida</strong>
-                                        </mat-error>
+
                                     </mat-form-field>
                                 </div>
                                 <div class="col-sm-12 col-md-2 col-lg-2">
                                     <mat-form-field class="form-group">
-                                        <input matInput type="number" placeholder="Numero *" formControlName="numero" [errorStateMatcher]="matcher">
-                                        <mat-error *ngIf="registrarActividad.get('numero').hasError('required')">
-                                            El numero es <strong>requerida</strong>
-                                        </mat-error>
+                                        <input matInput type="number" placeholder="Numero" formControlName="numero" [errorStateMatcher]="matcher">
                                     </mat-form-field>
                                 </div>
                             </div>

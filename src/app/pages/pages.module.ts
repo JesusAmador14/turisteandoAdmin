@@ -36,6 +36,19 @@ import { ActividadesComponent } from './actividades/actividades.component';
 import { ActividadesCreateComponent } from './actividades/actividades-create/actividades-create.component';
 import { GastronomiaComponent } from "./gastronomia/gastronomia.component";
 import { CreateGastronomiaComponent } from './gastronomia/create-gastronomia/create-gastronomia.component';
+// Import angular-fusioncharts
+import { FusionChartsModule } from 'angular-fusioncharts';
+
+// Import FusionCharts library
+import * as FusionCharts from 'fusioncharts';
+
+// Load FusionCharts Individual Charts
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+import { ActividadesListComponent } from './actividades/actividades-list/actividades-list.component';
+
+// Use fcRoot function to inject FusionCharts library, and the modules you want to use
+FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -49,7 +62,8 @@ const PAGES_COMPONENTS = [
   ActividadesComponent,
   ActividadesCreateComponent,
   GastronomiaComponent,
-  CreateGastronomiaComponent
+  CreateGastronomiaComponent,
+  ActividadesListComponent
 ];
 
 @NgModule({
@@ -67,6 +81,7 @@ const PAGES_COMPONENTS = [
     MatInputModule,
     MatPaginatorModule,
     MatCheckboxModule,
+    FusionChartsModule ,
     NgProgressRouterModule.withConfig({
       startEvents: [GuardsCheckStart, NavigationStart],
       completeEvents: [NavigationEnd, NavigationError, NavigationCancel],

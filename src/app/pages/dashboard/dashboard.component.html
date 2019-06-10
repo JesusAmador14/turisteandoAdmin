@@ -1,7 +1,169 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>BLANK PAGE</h2>
+            <h2>DASHBOARD</h2>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-pink hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">local_activity</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">ACTIVIDADES</div>
+                        <div class="number count-to">235</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-light-green hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">map</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">PUEBLOS</div>
+                        <div class="number count-to">121</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-orange hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">local_dining</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">Comidas</div>
+                        <div class="number count-to">2231</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-cyan hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">person_pin_circle</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">VISITAS</div>
+                        <div class="number count-to">3290</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Visitas en el año actual</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <fusioncharts [width]="width" [height]="height" [type]="type" [dataFormat]="dataFormat" [dataSource]="dataSource">
+                            </fusioncharts>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="body bg-pink">
+                            <div class="m-b--35 font-bold">Acividades más visitadas</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    ACTIVIDAD 1
+                                    <span class="pull-right">
+                                        <i class="material-icons">trending_up</i>
+                                    </span>
+                                    <span class="pull-right"><b>3 670 </b> <small>Visitas</small></span>
+                                </li>
+                                <li>
+                                    ACTIVIDAD 2
+                                    <span class="pull-right">
+                                        <i class="material-icons">trending_up</i>
+                                    </span>
+                                    <span class="pull-right"><b>2 872 </b> <small>Visitas</small></span>
+                                </li>
+                                <li>
+                                    ACTIVIDAD 3
+                                    <span class="pull-right">
+                                        <i class="material-icons">trending_up</i>
+                                    </span>
+                                    <span class="pull-right"><b>2 582 </b> <small>Visitas</small></span>
+                                </li>
+                                <li>
+                                    ACTIVIDAD 4
+                                    <span class="pull-right">
+                                        <i class="material-icons">trending_up</i>
+                                    </span>
+                                    <span class="pull-right"><b> 872 </b> <small>Visitas</small></span>
+                                </li>
+                                <li>
+                                    ACTIVIDAD 5
+                                    <span class="pull-right">
+                                        <i class="material-icons">trending_up</i>
+                                    </span>
+                                    <span class="pull-right"><b> 582 </b> <small>Visitas</small></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="body bg-green">
+                            <div class="m-b--35 font-bold">Pueblos más visitados</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    PUEBLO 1
+                                    <span class="pull-right">
+                                        <i class="material-icons">trending_up</i>
+                                    </span>
+                                    <span class="pull-right"><b>3 670 </b> <small>Visitas</small></span>
+                                </li>
+                                <li>
+                                    PUEBLO 2
+                                    <span class="pull-right">
+                                        <i class="material-icons">trending_up</i>
+                                    </span>
+                                    <span class="pull-right"><b>2 872 </b> <small>Visitas</small></span>
+                                </li>
+                                <li>
+                                    PUEBLO 3
+                                    <span class="pull-right">
+                                        <i class="material-icons">trending_up</i>
+                                    </span>
+                                    <span class="pull-right"><b>2 582 </b> <small>Visitas</small></span>
+                                </li>
+                                <li>
+                                    PUEBLO 4
+                                    <span class="pull-right">
+                                        <i class="material-icons">trending_up</i>
+                                    </span>
+                                    <span class="pull-right"><b> 872 </b> <small>Visitas</small></span>
+                                </li>
+                                <li>
+                                    PUEBLO 5
+                                    <span class="pull-right">
+                                        <i class="material-icons">trending_up</i>
+                                    </span>
+                                    <span class="pull-right"><b> 582 </b> <small>Visitas</small></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="body ">
+                            <fusioncharts [width]="widthPie" [height]="heightPie" [type]="typePie" [dataFormat]="dataFormatPie" [dataSource]="dataSourcePie">
+                            </fusioncharts>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

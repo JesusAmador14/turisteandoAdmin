@@ -28,7 +28,9 @@ export class ActividadesCreateComponent implements OnInit {
   progressRef: NgProgressRef;
   nombre: string;
   categorias: string[] = ["Acuática", "Cultural", "Aventura"];
+  etiquetas: string[] = ["Nadar", "Escalar", "Caminar", "Museo", "Parque", "Ruinas", "Buceo"];
   categoria: string = "categoria";
+  etiqueta: string = "etiqueta";
   calle: string;
   colonia: string;
   numero: number;
@@ -53,18 +55,19 @@ export class ActividadesCreateComponent implements OnInit {
     this._id = this._route.snapshot.paramMap.get("id");
     this.registrarActividad = this.formBuilder.group({
       nombre: ["", [Validators.required, Validators.minLength(6)]],
-      calle: ["", [Validators.required, Validators.minLength(6)]],
-      colonia: ["", [Validators.required, Validators.minLength(6)]],
-      numero: ["", [Validators.required]],
-      categoria: ["", [Validators.required]],
-      horarioEntrada: ["", [Validators.required]],
-      horarioSalida: ["", [Validators.required]],
+      calle: ["", [Validators.minLength(6)]],
+      colonia: ["", [Validators.minLength(6)]],
+      numero: ["", []],
+      categoria: ["", []],
+      etiqueta: ["", []],
+      horarioEntrada: ["", []],
+      horarioSalida: ["", []],
       descripcion: [
         "",
         [
           Validators.required,
           Validators.minLength(15),
-          Validators.maxLength(220)
+          Validators.maxLength(320)
         ]
       ]
     });
@@ -89,14 +92,16 @@ export class ActividadesCreateComponent implements OnInit {
     let data = {
       idPueblo: this._id,
       nombre: event.srcElement[0].value,
-      categoria: this.categoria,
+		categoria: this.categoria,
+		etiqueta: this.etiqueta,
       descripcion: event.srcElement[1].value,
       calle: event.srcElement[3].value,
       colonia: event.srcElement[4].value,
       numero: event.srcElement[5].value,
       horarioEntrada: event.srcElement[14].value,
       horarioSalida: event.srcElement[15].value,
-      dias: dias
+		dias: dias,
+		visitas: 0
     };
 
     this.actividad
@@ -123,8 +128,11 @@ export class ActividadesCreateComponent implements OnInit {
     }
     return dias;
   }
-  select(value) {
+  selectCategoria(value) {
     this.categoria = value;
+  }
+  selectEtiqueta(value) {
+    this.etiqueta = value;
   }
 }
 

@@ -45,7 +45,7 @@ export class CreateGastronomiaComponent implements OnInit {
     this._id = this._route.snapshot.paramMap.get("id");
     this.registrarComida = this.formBuilder.group({
       nombre: ["", [Validators.required]],
-      descripcion: ["", [Validators.required, Validators.minLength(15), Validators.maxLength(220)]]
+      descripcion: ["", [Validators.required, Validators.minLength(15), Validators.maxLength(320)]]
     });
   }
 

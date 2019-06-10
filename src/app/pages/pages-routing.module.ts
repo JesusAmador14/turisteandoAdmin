@@ -10,6 +10,7 @@ import { ActividadesComponent } from "./actividades/actividades.component";
 import { ActividadesCreateComponent } from './actividades/actividades-create/actividades-create.component';
 import { GastronomiaComponent } from './gastronomia/gastronomia.component';
 import { CreateGastronomiaComponent } from './gastronomia/create-gastronomia/create-gastronomia.component';
+import { ActividadesListComponent } from './actividades/actividades-list/actividades-list.component';
 
 const routes: Routes = [
   {
@@ -62,7 +63,12 @@ const routes: Routes = [
         path: "pueblos/gastronomia/:id/create",
         component: CreateGastronomiaComponent,
         canActivate: [AuthGuard]
-      }
+      },
+      {
+        path: "actividades",
+        component: ActividadesListComponent,
+        canActivate: [AuthGuard]
+      },
     ]
   }
 ];

@@ -241,11 +241,17 @@ $.AdminBSB.navbar = {
             var $body = $('body');
             var $overlay = $('.overlay');
 
+            console.log("Activado");
+
             //Open left sidebar panel
-            $('.bars').on('click', function() {
+
+            $('#menu').on('click', function() {
+                console.log("Menu abierto");
                 $body.toggleClass('overlay-open');
                 if ($body.hasClass('overlay-open')) { $overlay.fadeIn(); } else { $overlay.fadeOut(); }
             });
+
+
 
             //Close collapse bar on click event
             $('.nav [data-close="true"]').on('click', function() {
